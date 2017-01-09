@@ -1,0 +1,164 @@
+mytop (1.9.1-4) unstable; urgency=low
+
+  * Add 14_fix_deprecated_show_innodb_status.patch which replaces deprecated
+    command SHOW INNODB STATUS with SHOW ENGINE INNODB STATUS
+  * Removed whitespaces in changelog
+  * Update to debhelper 10
+
+ -- Werner Detter <werner@aloah-from-hell.de>  Mon, 09 Jan 2017 23:15:07 +0100
+
+mytop (1.9.1-3) unstable; urgency=low
+
+  * Updated 11_fix_url_manpage.patch for new upstream url
+  * debian/watch updated url for upstream version check 
+  * debian/control updated Homepage url 
+  * debian/copyright updated Source url
+  * debian/rules
+    + Add dh_lintian
+  * Add debian/source.lintian-overrides
+    + override for debian-watch-may-check-gpg-signature as upstream does
+      not provide cryptographic signature
+  * Update to debhelper 9
+  * Updated standards version to 3.9.8
+
+ -- Werner Detter <werner@aloah-from-hell.de>  Sun, 20 Nov 2016 10:31:06 +0100
+
+mytop (1.9.1-2) unstable; urgency=low
+
+  * Add 13_fix_scope_for_show_slave_status_data.patch which fixes incorrect
+    scope for SHOW SLAVE STATUS data variable (Closes: #756434)
+  * Add 12_fix_spelling_and_allignment.patch which fixes spelling in
+    help context and aligment (Closes: #712642, #732852)
+  * Updated standards version to 3.9.5
+  * Fixed wrong weekday in changelog
+
+ -- Werner Detter <werner@aloah-from-hell.de>  Tue, 29 Jul 2014 20:44:41 +0100
+
+mytop (1.9.1-1) unstable; urgency=low
+
+  * New upstream release (Closes: #590505, #538164, #565759, #558100,
+    #500078)
+  * New Maintainer (Closes: #704450)
+  * Updating standards version to 3.9.4
+  * Switch to dpkg-source 3.0 (quilt) format 
+    - Add debian/source/format
+  * Checked and recreated patchs from old upstream against new version.
+    Recreated necessary patches against new upstream version.
+    - Add 01_fix_pod.patch
+    - Add 02_remove_db_test.patch
+    - Add 03_fix_newlines.patch 
+    - Add 04_fix_unitialized.patch
+    - Add 05_prevent_ctrl_char_printing.patch
+    - Add 06_fix_screenwidth.patch
+    - Add 07_add_doc_on_missing_cli_options.patch
+    - Add 08_add_mycnf.patch, contains now error handling (Closes: #627300,
+      #694555)
+    - Add 09_q_is_quit.patch
+  * Add 10_fix_warnings.patch which fixes release detection and some perl 
+    warnings
+  * Add 11_fix_url_manpage.patch which updates upstream url in manpage
+  * Deleted README.Source
+  * Update to debhelper 7
+  * debian/copyright revised for DEP5 specifications
+  * Recreated debian/rules
+  * Deleted debian/menu, debian/postrm, debian/postinst, debian/prerm
+  * Renamed mytop.example to mytop.sample.conf
+
+ -- Werner Detter <werner@aloah-from-hell.de>  Mon, 13 May 2013 17:41:05 +0100
+
+mytop (1.6-6) unstable; urgency=low
+
+  * Add patch from Tilman Koschnick handling ~/.my.cnf (Closes: #520421)
+  * Widen ID (Closes: #517097)
+  * Document --sort (Closes: #509464)
+  * Fix line wrapping (Closes: #504501)
+  * debian/control
+    - Bump Standards-Version: 3.8.1
+    - Depends: +libconfig-inifiles-perl
+
+ -- Philipp Matthias Hahn <pmhahn@debian.org>  Mon, 06 Apr 2009 23:28:58 +0200
+
+mytop (1.6-5) unstable; urgency=low
+
+  * A newline should be replaced by a space, not just deleted (Closes: #502179)
+  * debian/patches/q_is_quit.diff: 'q' quits mytop and does not change back to
+    't'hread mode.
+  * debian/control
+    - Bump Standards-Version: 3.8.0
+    - quilt patch management changes: debian/rules, debian/README.source
+
+ -- Philipp Matthias Hahn <pmhahn@debian.org>  Thu, 23 Oct 2008 22:47:58 +0200
+
+mytop (1.6-4) unstable; urgency=low
+
+  * FTBFS: rmdir: failed to remove `debian/tmp/usr/lib': No such file or
+    directory (Closes: #479931) Thanks to Dmitry E. Oboukhov.
+
+ -- Philipp Matthias Hahn <pmhahn@debian.org>  Thu, 08 May 2008 06:59:20 +0200
+
+mytop (1.6-3) unstable; urgency=low
+
+  * Don't print control chars to the terminal (Closes: #477822)
+    Based on path by "Dmitry E. Oboukhov". Thanks again.
+  * Update 475140.flicker.diff from "Dmitry E. Oboukhov"
+
+ -- Philipp Matthias Hahn <pmhahn@debian.org>  Sun, 27 Apr 2008 23:39:31 +0200
+
+mytop (1.6-2) unstable; urgency=low
+
+  * Big thanks to "Dmitry E. Oboukhov" <dimka avanto org> for his work.
+  * debian/control:
+    - Bumped Standards-Version to 3.7.3
+    - Add Homepage:-field
+    - Build-Depends: quilt
+  * debian/menu: Move to "Applications/Data Management"
+  * debian/rules:
+    - add Quilt support
+    - fix clean and binary-arch targets
+  * A newline should be replaced by a space, not just deleted (Closes:
+    #434625)
+  * Unknown database 'test', use '' instead (Closes: #424063)
+  * Use of uninitialized value in substitution (s///) at /usr/bin/mytop
+    line 958. (Closes: #455901)
+  * apply patch for removing the terminal flicker (Closes: #475140)
+
+ -- Philipp Matthias Hahn <pmhahn@debian.org>  Fri, 25 Apr 2008 00:45:46 +0200
+
+mytop (1.6-1) unstable; urgency=medium
+
+  * New upstream version: Fixes use of blanks in password.
+  * Fix case of 'H' for header. (closes: #334509)
+  * Warn about passwords-on-commandline. (closes: #357150)
+  * Give advice to use two dashes with long options. (closes: #411055)
+  * Add 5.x servers to Description in debian/control. (closes: #348222)
+  * Bumped Standards-Version to 3.7.2.2
+    - /usr/{lib,share}/menu transition.
+  * Added debian/watch.
+
+ -- Philipp Matthias Hahn <pmhahn@debian.org>  Tue, 20 Feb 2007 18:21:29 +0100
+
+mytop (1.4-1) unstable; urgency=low
+
+  * New upstream version.
+  * Bumped Standards-Version to 3.6.1.0.
+    - Remove /usr/doc/mytop link.
+    - Update menu-file.
+
+ -- Philipp Matthias Hahn <pmhahn@debian.org>  Thu, 29 Jul 2004 20:55:27 +0200
+
+mytop (1.2-1) unstable; urgency=low
+
+  * New upstream version.
+  * Change email to d.o address.
+  * Bumped Standards-Version to 3.5.7.
+    - Build package in binary-indep target
+
+ -- Philipp Matthias Hahn <pmhahn@debian.org>  Tue, 12 Nov 2002 09:23:53 +0100
+
+mytop (1.0-1) unstable; urgency=low
+
+  * Initial release. (closes: #138066)
+  * Minor cleanup.
+
+ -- Philipp Matthias Hahn <pmhahn@titan.lahn.de>  Sun, 14 Jul 2002 21:49:16 +0200
+
