@@ -2174,8 +2174,8 @@ running queries appear at the top of the list.
 
 =item B<I>
 
-Switch to InnoDB Status mode.  The output of "SHOW INNODB STATUS" will
-be displayed every cycle.  In a future version, this may actually
+Switch to InnoDB Status mode. The output of "SHOW ENGINE INNODB STATUS"
+will be displayed every cycle. In a future version, this may actually
 summarize that data rather than producing raw output.
 
 =item B<k>
